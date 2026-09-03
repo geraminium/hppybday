@@ -12,10 +12,10 @@
         rel="stylesheet">
     <style>
         :root {
-            --ink-deep: #1B1035;
-            --plum: #3A1250;
+            --black: #000000;
+            --lightblack: #161616;
             --marigold: #FFB347;
-            --ivory: #FDF4E3;
+            --ivory: #fafde3;
         }
 
         * {
@@ -26,7 +26,7 @@
         body {
             margin: 0;
             min-height: 100%;
-            background: linear-gradient(160deg, var(--ink-deep) 0%, var(--plum) 100%);
+            background: linear-gradient(160deg, var(--lightblack) 0%, var(--black) 100%);
             color: var(--ivory);
             font-family: 'Work Sans', sans-serif;
         }
@@ -39,21 +39,47 @@
             padding: 9vh 8vw 10vh;
         }
 
-        .hero-number {
+        .hero-text {
+            position: relative;
+            margin: 0 0 0.35rem;
+            color: #f9e5b2;
             font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 5vw, 15rem);
             font-weight: 500;
-            font-size: clamp(4rem, 22vw, 7.5rem);
-            line-height: 1;
-            color: var(--marigold);
-            margin: 0;
+            line-height: 0.78;
+            letter-spacing: -0.08em;
+            text-align: center;
+            text-shadow:
+                0 0 4px #fff6d5,
+                0 0 14px rgba(255, 190, 83, 0.95),
+                0 0 36px rgba(255, 157, 37, 0.8),
+                0 0 76px rgba(255, 157, 37, 0.45);
             opacity: 0;
-            animation: fade-up 0.7s ease forwards;
+            animation: hero-glow 1.2s ease 0.05s forwards;
+        }
+
+        .hero-text::before,
+        .hero-text::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            left: 50%;
+            top: 50%;
+            width: 30rem;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 162, 96, 0.9), transparent);
+            box-shadow: 0 0 18px 2px rgba(255, 173, 61, 0.45);
+            transform: translate(-50%, -50%) rotate(8deg);
+        }
+
+        .hero-text::after {
+            transform: translate(-50%, -50%) rotate(-8deg);
         }
 
         .hero-label {
             font-family: 'Fraunces', serif;
             font-style: italic;
-            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            font-size: clamp(1.1rem, 3vw, 1.25rem);
             color: rgba(253, 244, 227, 0.75);
             margin: 0 0 3rem;
             opacity: 0;
@@ -124,17 +150,33 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes hero-glow {
+            from {
+                opacity: 0;
+                transform: scale(0.88);
+                filter: blur(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <main>
-        <p class="hero-number">50</p>
-        <p class="hero-label">rokov</p>
+        <p class="hero-text">MAPA TVOJICH ÚSPECHOV</p>
+        <p class="hero-label">50 rokov - cesta, na ktorú môžeš byť hrdý</p>
 
         <div class="letter">
-            <p>Milý kamarát, 50 rokov je krásny míľnik – chvíľa, keď sa človek môže na okamih zastaviť, obzrieť späť a s
+            <p>Milý kamarát,</p>
+                
+            <p>50 rokov je krásny míľnik – chvíľa, keď sa človek môže na okamih zastaviť, obzrieť späť a s
                 hrdosťou sa pozrieť na cestu, ktorú za sebou prešiel.</p>
 
             <p>Prajeme Ti predovšetkým pevné zdravie, šťastie, spokojnosť a veľa krásnych chvíľ s ľuďmi, na ktorých Ti
